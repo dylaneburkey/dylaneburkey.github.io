@@ -1,84 +1,168 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<meta charset="utf-8">
+	<title>NuraSquad(&quot;Profile&quot;);</title>
+	<meta name="description" content="This site was hastily built as my tiny profile page. With so much of thirst to achieve in loads, I have just stepped in. Being a random blogger and hardent pythoner I do all sorts of crispy codings.">
+	<meta name="author" content="Arun Cvf">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="theme-color" content="#ec007c">
+ <!-- colour theme -->
+  <link rel="stylesheet" media="all" href="style.css" />
+	
+</head>
+<body>
 
-    <title>Chanso Roadmap</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="img/iconweb.png" />
-    <link rel="stylesheet" href="style/style.css">
 
-  </head>
-  <body>
-<!-- nav and hero -->
-   
-     <div class="topnav" id="myTopnav">
-      <a href="#home"><img src="img/iconweb.png" alt=""></a>
-      <div class="dropdown">
-        <button class="dropbtn">Roadmap
-        <i class="fa fa-caret-down"></i>
-        </button>
-          <div class="dropdown-content">
-            <a href="#">Frontend</a>
-            <a href="#" style="opacity: 0.2;">Backend</a>
-            <a href="#" style="opacity: 0.2;">Android</a>
-            <a href="#" style="opacity: 0.2;">...</a>
-          </div>
-      </div>
-      <a href="#news">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-    </div> 
-    <div class="hero">
-        <span>
-          <h1>Developer Roadmap</h1>
-          <p>Panduan langkah demi langkah untuk menjadi developer</p>
-          <p class="github">Follow me on <a href="https://github.com/chansosemar">Github</a></p>
-        </span>
-    </div> 
-<!-- end of nav and hero -->
-<!-- main content -->
-    <div class="main-container">
-      <section class="main">
-        <div class="main-content">
-          <h1>Perhatian</h1>
-          <p>Halo Selamat datang di website sederhana ini. Website ini berisi tentang panduan bagi para developer pemula yang baru terjun ke dunia programming. Dimaksudkan agar langkah-langkah yang di ambil dalam pembelajarannya tidak berantakan atau bahkan keluar jalur. Dengan panduan dari website ini saya harap anda mendapatkan manfaat. Semua bisa anda dapatkan secara gratis tanpa pungutan biaya langganan atau apapun, karena sedianya saya juga masih belajar dan untuk memperlancar pembelajaran saya. Saya menerapkan <span style="color:#e63946; font-weight:bold">"Learning by Teaching"</span>. Penyelesaian website ini berjalan secara bertahap seiring waktu.</p>
-        </div>
-     
-      </section>
-        <div class="card-content" id="roadmap">
-          <div class="card active">
-            <a href="pages/frontend.html">
-            <h2>Frontend</h2>
-            <p>Panduan untuk menjadi Frontend Developer</p>
-            </a>
-          </div>
-          <div class="card non-active" id="roadmap">
-            <a href="">
-            <h2>Backend</h2>
-            <p>Panduan untuk menjadi Backend Developer</p>
-            </a>
-          </div>
-          <div class="card non-active" id="roadmap">
-            <a href="">
-            <h2>Android</h2>
-            <p>Panduan untuk menjadi Android Developer</p>
-            </a>
-          </div>
-        </div>
-        <p class="segera">--- Segera Hadir ---</p>
-    </div>
-    <footer>
-      <p>&copy; copyright 2020 || Chanso</p>
-    </footer>
-    <script src="script/script.js"></script>
-  </body>
+
+
+<!-- intro -->
+<div class="container sm-l sm-6 md-3 lg-3">
+	<div class="pad">
+		<br>
+		<span class="grey oneliner sm-off">// Introduction --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+		<span class="sm-off"><br><br></span>
+		<span class="blue"><em>function</em></span> <span class="green">whyThisName</span>(<span class="orange"><em>name</em></span>)
+		<span class="sm-off">
+			<br>{<br>
+			<span class="string-indent">
+				<span class="blue">let</span> niceName <span class="fuschia">=</span> name<span class="fuschia">.</span><span class="green">split</span>(<span class="yellow">' '</span>)[<span class="purple">0</span>]; <br>
+			</span>
+			<span class="string-indent">
+				_niceName <span class="fuschia">=</span> niceName<span class="fuschia">.</span><span class="green">split</span>(<span class="yellow">''</span>)<span class="fuschia">.</span><span class="blue">reverse</span>()<span class="fuschia">.</span><span class="green">join</span>(<span class="yellow">''</span>);<br>
+			</span>
+			<span class="string-indent">
+				_niceName <span class="fuschia">=</span> (_niceName <span class="fuschia">===</span> <span class="purple">undefined</span>) <span class="fuschia">?</span> <span class="yellow">'justAnotherGuy' </span><span class="fuschia">:</span> _niceName;<br>
+			</span>
+			<span class="string-indent">
+				<span class="fuschia">return</span> <span class="yellow">'Nura, if reversed denotes the name of the founder - '</span><span class="fuschia">+</span>_niceName<span class="fuschia">+</span><span class="yellow">' Yah! that's me.(I'm not a reowned geek or at least the beginner.').'</span>;<br>
+			</span>
+			}<br>
+			<span class="green">whyThisName</span>(<span class="yellow">'nura squad'</span>);
+		</span>
+<!--
+  <span class="sm-only">
+			{<span class="fold">...</span>}<br>
+		</span> 
+    -->
+	</div>
+</div>
+
+
+
+
+<!-- page content -->
+<div class="container md-r sm-6 md-3 md-l lg-3 lg-r">
+	<div class="pad">
+		&nbsp;<br>
+		<span class="grey oneliner">// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+		<br>
+		<span class="green">About</span><br>
+		<br>
+				This site was hastily built as my tiny profile page. With so much of thirst to achieve in loads, I have just stepped in. Being a random blogger and hardent pythoner I do all sorts of crispy codings. Hope
+				you all appreciate my steps. <a href="/">Arun Prakash</a> popularly known as [<a href="//facebook.com/fatherofinternet">Arun Cvf</a>] - short when spelt. 
+				<br>
+<br>This nasty programmer never keeps away. He is never idle. He does all head-butted stuffs to build his Webapps. A tech-savy by nature and a professional programmer, this man is damn crazy.<br>
+<br>
+<span class="purple"><br>
+<s>I couldn't spare money to arrange devotees to spread good words about me. So I'm adding it myself. Thanks for your time <3 </s><br>
+<br>
+You can reach me out at: <a href="mailto:hello2aruncvf@gmail.com?Subject=Hello%20Arun" target="_top">hello2aruncvf@gmail.com</a>.
+<br>
+</span>
+<br>
+<br />
+<br>
+Happy <span id="ing"></span><br />
+<br>
+<pre class="grey">
+01000001 01110010 01110101 01101110 
+</pre>		
+<br>
+		&nbsp;
+	</div>
+</div>
+
+
+
+
+
+<!-- menu -->
+<div class="container sm-l sm-6 md-3 md-r lg-3 lg-l">
+	<div class="pad">
+		&nbsp;<br>
+		<span class="grey oneliner">// Projects --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+		<br>
+		<div id="episodes" class="multi-column">
+			<a href="http://www.onemadgeek.com">01: Onemadgeek.com</a><br>
+			<a href="http://www.couponsthala.in">02: Couponsthala.in</a><br>
+			<a href="//nurasquad.com">03: Nurasquad.com</a><br>
+			<a href="//nurasquadchat.firebaseapp.com/">04: Nurasquad Chat</a><br>
+			<a href="//play.google.com/store/apps/details?id=com.nurasquad.takecare.emergency">05: Take Care Android App</a><br>
+			<a href="//www.youtube.com/onemadgeek">06: Youtube Channel</a><br>
+			<a href="http://www.techshare360.blogspot.in/">07: TechShare360</a><br>
+			<a href="/">08: More To Come.</a><br>
+			</div>
+	</div>
+	<div class="pad">
+		<br>
+		<span class="grey oneliner">// Meta --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+		<br>
+		<a href="//facebook.com/fatherofinternet" class="purple-link">[Facebook]</a> 
+		<a href="//github.com/onemadgeek" class="purple-link">[Github]</a>
+		<a href="//twitter.com/whoisarun" class="purple-link">[Twitter]</a>
+		<a href="//youtube.com/onemadgeek" class="purple-link">[Youtube]</a>
+		<br>
+		<a href="//www.quora.com/profile/Arun-Prakash-372" class="blue-link">[Quora]</a>
+		<a href="//instagram.com/whoisarun" class="blue-link">[Instagram]</a>
+		<a href="//plus.google.com/u/2/+Aruncvf" class="blue-link">[Google Plus]</a>
+		<br>
+		<a href="//linkedin.com/in/aruncvf" class="orange-link">[LinkedIn]</a>
+		<a href="/" id="site" class="orange-link"><span class="selected">[Nura Squad]</span></a>
+    <a href="//github.com/onemadgeek/simple-portfolio-html" class="orange-link">[Fork This]</a>
+		<br>&nbsp;
+	</div>
+</div>
+
+
+
+<script
+  src="//code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script>
+
+	// glitch text
+
+	var things = ['coding','knitting','blogging','blogging','blogging','blogging','blogging','designing','planning','writing','writing','writing','writing','writing','writing','writing','programming','programming','programming','programming','programming','concluding','programming','thinking','scripting','scripting','scripting','scripting','scripting','sewing','sketching','ruminating','deliberating','pondering','contemplating','abstracting','abstracting','abstracting','abstracting','abstracting','abstracting','optimising','optimising','optimising','optimising','optimising','optimising','refactoring','refactoring','refactoring','objectifying','simplifying','decoupling','debugging','debugging','debugging','debugging','debugging','debugging','configuring','streamlining','searching','tweaking','editing'];
+	var junk = ['#','@','%','*','&amp;','&lt;','&gt;','_','=','+','[',']','|','-','!','?','X'];
+
+	function randomInt(min, max)
+	{
+		return Math.round(min + (Math.random() * (max-min)));
+	}
+
+	function tick()
+	{
+		var txt = things[randomInt(0, things.length-1)];
+		var chars = txt.split('');
+		var glitch = randomInt(0, 3);
+		for (var i = 0; i < glitch; i++)
+		{
+			chars[randomInt(0, chars.length-1)] = junk[randomInt(0, junk.length-1)];
+		}
+		txt = chars.join('');
+		$('#ing').html(txt);
+		window.setTimeout(tick, randomInt(16,400));
+	}
+
+	if(document.getElementById('ing') != null) tick();
+
+
+</script>
+
+
+
+
+</body>
 </html>
-
-      
-      
-
-
-
