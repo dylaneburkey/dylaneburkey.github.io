@@ -6,6 +6,25 @@
   <title>Dylan Burkey | Mechanical Engineering</title>
   <meta name="description" content="Dylan Burkey — Mechanical Engineering student at Georgia Tech. Process/manufacturing, robotics, aircraft build coordination." />
   <style>
+    .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  object-fit: cover;
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 50px rgba(0,0,0,.55);
+}
+.herohead {
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  margin-top: 10px;
+}
+@media (max-width: 520px){
+  .herohead { flex-direction: column; align-items:flex-start; }
+}
+
     :root{
       --bg:#0b0c0f;
       --panel: rgba(255,255,255,.06);
@@ -192,7 +211,17 @@
       <div class="hero-grid">
         <div>
           <div class="kicker">Mechanical Engineering</div>
-          <h1>Dylan Burkey</h1>
+          <div class="herohead">
+  <img class="avatar" src="headshot.jpg" alt="Dylan Burkey headshot" />
+  <div>
+    <h1 style="margin:0;">Dylan Burkey</h1>
+    <p class="subtitle" style="margin-top:10px;">
+      Mechanical Engineering student at the Georgia Institute of Technology (Manufacturing Concentration).
+      Interested in process engineering, continuous improvement, and building reliable systems — from factory floors to robots to aircraft.
+    </p>
+  </div>
+</div>
+
           <p class="subtitle">
             Mechanical Engineering student at the Georgia Institute of Technology (Manufacturing Concentration).
             Interested in process engineering, continuous improvement, and building reliable systems — from factory floors to robots to aircraft.
