@@ -129,6 +129,7 @@
     .footer a{ color: var(--muted); }
   </style>
 </head>
+<img src="robot.jpg" alt="Robot" style="width:100%; border-radius:16px; border:1px solid rgba(255,255,255,.12); margin:10px 0;">
 
 <body>
   <div class="wrap">
