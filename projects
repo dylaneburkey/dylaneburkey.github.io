@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Dylan Burkey</title>
+  <meta name="description" content="Projects by Dylan Burkey — robotics, aviation build coordination, and process engineering." />
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --panel: rgba(255,255,255,.06);
+      --text:#e9eaee;
+      --muted: rgba(233,234,238,.72);
+      --muted2: rgba(233,234,238,.55);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(900px 600px at 20% 10%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 600px at 80% 40%, rgba(255,255,255,.05), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+    a{ color: var(--text); text-decoration:none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+    .wrap{ max-width: 1040px; margin: 0 auto; padding: 38px 18px 70px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      position: sticky; top: 0;
+      padding: 14px 0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,12,15,.86), rgba(11,12,15,.35));
+      z-index: 5;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .dot{
+      width: 10px; height: 10px; border-radius:999px;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
+    }
+    .brand b{ font-weight: 650; }
+    .nav{ display:flex; gap: 14px; flex-wrap: wrap; justify-content:flex-end; }
+    .nav a{
+      font-size: 13px; color: var(--muted);
+      padding: 7px 10px; border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      text-decoration:none;
+      background: rgba(255,255,255,.04);
+    }
+
+    .header{
+      margin-top: 22px;
+      padding: 22px 22px 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .kicker{ color: var(--muted2); font-size: 13px; text-transform: uppercase; letter-spacing: .18em; }
+    h1{ margin: 10px 0 10px; font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; }
+    .subtitle{ margin: 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
+
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2{ margin: 0 0 10px; font-size: 16px; letter-spacing: -.01em; }
+    .card p{ margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .bullets{
+      margin: 0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .tags{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 12px; }
+    .tag{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.03);
+    }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); text-decoration:none; }
+
+    .footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .footer a{ color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="dot"></div>
+        <div><b>Dylan Burkey</b></div>
+      </div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html" style="color: rgba(233,234,238,.95);">Projects</a>
+        <a href="resume.pdf">Resume</a>
+        <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <section class="header">
+      <div class="kicker">Selected Work</div>
+      <h1>Projects</h1>
+      <p class="subtitle">
+        A few builds and process-focused projects. If you want, I can also add screenshots, diagrams, and a “results” section for each.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>ME 2110 Autonomous Robot</h2>
+        <p>Autonomous robot build focused on reliability, cycle time, and modular subsystem design.</p>
+        <ul class="bullets">
+          <li>Designed and iterated mechanical subsystems with rapid prototyping (CAD + 3D printing + laser cutting).</li>
+          <li>System integration and testing to improve repeatability and reduce failure modes under time constraints.</li>
+          <li>Packaged design decisions into a clean build process: test plan, iteration logs, and repeatable assembly steps.</li>
+        </ul>
+        <div class="tags">
+          <div class="tag">Design for Reliability</div>
+          <div class="tag">Prototyping</div>
+          <div class="tag">Systems Integration</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Yellow Jacket Aviation — RV-14 Build</h2>
+        <p>Early-stage build coordination and process planning to prevent shortages and streamline assembly.</p>
+        <ul class="bullets">
+          <li>Structured a build plan: BOM breakdown, sourcing strategy, kitting, and sequencing to reduce downtime.</li>
+          <li>Coordinated across teams (structures/systems/logistics) to standardize procedures and solve constraints fast.</li>
+          <li>Established a repeatable “build ops” approach (parts flow → work instructions → QA checks).</li>
+        </ul>
+        <div class="tags">
+          <div class="tag">Process Coordination</div>
+          <div class="tag">BOM / Sourcing</div>
+          <div class="tag">Standard Work</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Smurfit WestRock — Engineering</h2>
+        <p>Manufacturing/process engineering work aimed at measurable savings, throughput, and stability.</p>
+        <ul class="bullets">
+          <li>Process analysis across corrugated manufacturing/support systems to reduce waste and improve utilization.</li>
+          <li>Reliability + operations improvements targeting uptime, quality consistency, and constraint reduction.</li>
+          <li>Built data-driven tooling for decision-making (inventory optimization / tracking).</li>
+        </ul>
+        <div class="tags">
+          <div class="tag">Lean / CI</div>
+          <div class="tag">Uptime / OEE</div>
+          <div class="tag">Cost Savings</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Want a deeper version?</h2>
+        <p>
+          I can turn each project into a “case study” section with: problem → approach → results → what I learned.
+          Also easy to add images (robot photos, build pictures, charts).
+        </p>
+        <div class="btnrow">
+          <a class="btn" href="resume.pdf">View Resume</a>
+          <a class="btn" href="mailto:dburkey3@gatech.edu">Email Me</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="y"></span> Dylan Burkey</div>
+      <div>
+        <a href="index.html">Home</a> · <a href="resume.pdf">Resume</a> ·
+        <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
