@@ -1,11 +1,302 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>My GitHub Site</title>
-  </head>
-  <body>
-    <h1>It works 🎉</h1>
-    <p>This is my GitHub Pages website.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dylan Burkey | Mechanical Engineering</title>
+  <meta name="description" content="Dylan Burkey — Mechanical Engineering student at Georgia Tech. Process/manufacturing, robotics, aircraft build coordination." />
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text:#e9eaee;
+      --muted: rgba(233,234,238,.72);
+      --muted2: rgba(233,234,238,.55);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(900px 600px at 20% 10%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 600px at 80% 40%, rgba(255,255,255,.05), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      letter-spacing: .1px;
+    }
+    a{ color: var(--text); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+    .wrap{ max-width: 1040px; margin: 0 auto; padding: 38px 18px 70px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      position: sticky; top: 0;
+      padding: 14px 0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,12,15,.86), rgba(11,12,15,.35));
+      z-index: 5;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .dot{
+      width: 10px; height: 10px; border-radius:999px;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
+    }
+    .brand b{ font-weight: 650; }
+    .nav{ display:flex; gap: 14px; flex-wrap: wrap; justify-content:flex-end; }
+    .nav a{
+      font-size: 13px; color: var(--muted);
+      padding: 7px 10px; border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      text-decoration:none;
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero{
+      margin-top: 22px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 18px;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+    .kicker{ color: var(--muted2); font-size: 13px; text-transform: uppercase; letter-spacing: .18em; }
+    h1{ margin: 10px 0 10px; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; }
+    .subtitle{ margin: 0; color: var(--muted); font-size: 16px; max-width: 60ch; }
+    .cta{
+      margin-top: 18px;
+      display:flex; gap: 10px; flex-wrap: wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); text-decoration:none; }
+    .btn.primary{
+      background: rgba(255,255,255,.92);
+      color:#0b0c0f;
+      border-color: transparent;
+    }
+    .btn.primary:hover{ background: rgba(255,255,255,.82); }
+
+    .sidecard{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      padding: 16px;
+    }
+    .meta{ display:grid; gap: 10px; }
+    .meta .row{ display:flex; justify-content:space-between; gap: 12px; }
+    .meta .label{ color: var(--muted2); font-size: 12px; }
+    .meta .value{ color: var(--text); font-size: 13px; text-align:right; }
+    .pillrow{ display:flex; gap: 8px; flex-wrap:wrap; margin-top: 12px; }
+    .pill{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2{ margin: 0 0 10px; font-size: 16px; letter-spacing: -.01em; }
+    .card p{ margin: 0; color: var(--muted); font-size: 14px; }
+    .proj{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .proj h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: -.01em;
+    }
+    .bullets{
+      margin: 0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .footer{
+      margin-top: 28px;
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .footer a{ color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="dot"></div>
+        <div><b>Dylan Burkey</b></div>
+      </div>
+      <div class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf">Resume</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Mechanical Engineering</div>
+          <h1>Dylan Burkey</h1>
+          <p class="subtitle">
+            Mechanical Engineering student at the Georgia Institute of Technology (Manufacturing Concentration).
+            Interested in process engineering, continuous improvement, and building reliable systems — from factory floors to robots to aircraft.
+          </p>
+
+          <div class="cta" id="contact">
+            <a class="btn primary" href="resume.pdf">Download Resume</a>
+            <a class="btn" href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="mailto:dburkey3@gatech.edu">dburkey3@gatech.edu</a>
+          </div>
+        </div>
+
+        <aside class="sidecard">
+          <div class="meta">
+            <div class="row">
+              <div class="label">Location</div>
+              <div class="value">Atlanta, GA</div>
+            </div>
+            <div class="row">
+              <div class="label">Focus</div>
+              <div class="value">Manufacturing / Process</div>
+            </div>
+            <div class="row">
+              <div class="label">Tools</div>
+              <div class="value">CAD • Excel • Python</div>
+            </div>
+          </div>
+
+          <div class="pillrow">
+            <div class="pill">Process Improvement</div>
+            <div class="pill">OEE / Uptime</div>
+            <div class="pill">DFM / DFA</div>
+            <div class="pill">FMEA</div>
+            <div class="pill">Lean / 5S</div>
+            <div class="pill">Systems Thinking</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="grid" id="projects">
+      <div class="card">
+        <h2>Projects</h2>
+
+        <div class="proj">
+          <h3>ME 2110 Autonomous Robot</h3>
+          <ul class="bullets">
+            <li>Designed, fabricated, and programmed an autonomous robot (Arduino-based) with modular subsystems to complete 5 tasks in &lt;40 seconds.</li>
+            <li>Applied DFM/DFA + FMEA + iterative prototyping to improve reliability and assembly efficiency using CAD, 3D printing, and digital fabrication.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <h3>Yellow Jacket Aviation — RV-14 Aircraft Build</h3>
+          <ul class="bullets">
+            <li>Built early-stage fabrication readiness: BOM + sourcing + kitting strategy + initial build sequencing to prevent shortages and stoppages.</li>
+            <li>Coordinated structures/systems/logistics teams during kickoff assembly to standardize procedures and resolve supply/process constraints.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <h3>Smurfit WestRock — Process Engineering</h3>
+          <ul class="bullets">
+            <li>Led process analysis across corrugated manufacturing systems (thermal, mechanical, quality) projecting $275K annual savings through waste reduction and equipment utilization.</li>
+            <li>Developed data-driven inventory optimization (Oracle JD Edwards API) to cut excess stock and support continuous operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="about">
+        <h2>About</h2>
+        <p>
+          I like taking complex operations and making them measurable, repeatable, and faster.
+          I’m especially interested in manufacturing/process engineering, reliability, and the intersection of hardware + data (instrumentation, dashboards, and decision-making).
+        </p>
+
+        <div style="height:14px"></div>
+
+        <h2>Quick Links</h2>
+        <p>
+          <a href="resume.pdf">Resume (PDF)</a> •
+          <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a> •
+          <a href="mailto:dburkey3@gatech.edu">Email</a>
+        </p>
+
+        <div style="height:14px"></div>
+
+        <h2>Contact</h2>
+        <p>
+          Best way to reach me: <a href="mailto:dburkey3@gatech.edu">dburkey3@gatech.edu</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="y"></span> Dylan Burkey</div>
+      <div>
+        <a href="#projects">Projects</a> · <a href="resume.pdf">Resume</a> · <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
