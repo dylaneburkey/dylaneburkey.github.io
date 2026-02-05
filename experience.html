@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience | Dylan Burkey</title>
+  <meta name="description" content="Work experience and leadership roles — Dylan Burkey" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #f8f9fa;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: all 0.2s ease; }
+    a:hover { color: var(--accent-hover); }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after { width: 100%; }
+
+    /* Page Header */
+    .page-header {
+      padding: 10rem 2rem 4rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 50%, #f0f4ff 100%);
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      animation: fadeInUp 0.6s ease-out 0.1s both;
+    }
+
+    /* Timeline */
+    .timeline-section { padding: 5rem 2rem; }
+    .timeline-inner { max-width: 900px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+      padding-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.5s ease;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    .exp-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .exp-title h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .exp-title .company { color: var(--accent); font-weight: 600; font-size: 1.1rem; }
+    .exp-title .location { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem; }
+    .exp-date {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .exp-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Leadership Section */
+    .leadership-section {
+      background: white;
+      padding: 5rem 2rem;
+    }
+    .leadership-inner { max-width: 900px; margin: 0 auto; }
+    .leadership-grid { display: grid; gap: 1.5rem; }
+
+    .leader-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .leader-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .leader-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .leader-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .leader-card .org { color: var(--accent); font-weight: 500; }
+    .leader-card .date { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .leader-card p { color: var(--text-muted); }
+
+    /* Certifications */
+    .cert-section { padding: 5rem 2rem; }
+    .cert-inner { max-width: 900px; margin: 0 auto; }
+    .cert-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .cert-badge {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .cert-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--text);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-section h2 { color: white; font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    .btn-primary { background: white; color: var(--text); }
+    .btn-primary:hover { background: var(--bg); transform: translateY(-2px); color: var(--text); }
+
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.8); }
+    footer a:hover { color: white; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      .page-header h1 { font-size: 2.25rem; }
+      .exp-header { flex-direction: column; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Dylan Burkey</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.pdf">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Experience</h1>
+    <p>Professional work and leadership roles</p>
+  </header>
+
+  <section class="timeline-section">
+    <div class="timeline-inner">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-title">
+                <h3>Engineering Intern</h3>
+                <div class="company">Smurfit Westrock</div>
+                <div class="location">Mooresville, NC</div>
+              </div>
+              <span class="exp-date">May 2025 – Aug 2025</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led process and mechanical engineering analysis across corrugated manufacturing systems, projecting <strong>$275K in annual savings</strong> through waste reduction and equipment utilization.</li>
+              <li>Directed development of a data-driven inventory optimization system (Oracle JD Edwards API integration) to support continuous manufacturing operations, reducing excess stock in a <strong>$13.52M inventory by 23%</strong>.</li>
+              <li>Partnered with maintenance technicians on equipment diagnostics and inventory control initiatives, integrating lean manufacturing and 5S practices to improve machine uptime.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-title">
+                <h3>Automotive Intern</h3>
+                <div class="company">Snapping Shoals EMC</div>
+                <div class="location">Covington, GA</div>
+              </div>
+              <span class="exp-date">Aug 2022 – May 2023</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Performed preventive maintenance on a fleet of ~75 utility vehicles including oil/filter service, brake inspections, electrical diagnostics, and hydraulic checks, supporting operations for a <strong>$12M asset base</strong>.</li>
+              <li>Worked alongside shop mechanics on chassis and aerial-lift system improvements (hydraulic inspection, chassis integrity assessment, outrigger and boom lubrication) to improve serviceability and assembly efficiency.</li>
+              <li>Executed paint correction, multi-stage bodywork (bare-metal prep, filler work, sealant application), surface refinishing, and on-board diagnostics (OBD fault-code analysis, sensor verification).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-title">
+                <h3>Mentor</h3>
+                <div class="company">Curious Cardinal</div>
+                <div class="location">Atlanta, GA</div>
+              </div>
+              <span class="exp-date">Dec 2024 – Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Mentored K-12 students in personalized one-on-one sessions, designing customized curricula in STEM and arts disciplines.</li>
+              <li>Coached students through professional development and career guidance, including college application processes and the creation of research and creative portfolios.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="leadership-section">
+    <div class="leadership-inner">
+      <h2 class="section-title">Leadership & Involvement</h2>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <h3>Research Team Lead</h3>
+          <div class="org">Yellow Jacket Aviation</div>
+          <div class="date">Feb 2023 – Present</div>
+          <p>Lead of YJA's 25-member research team, spearheading R&D of an FAA-compliant aircraft, coordinating interdisciplinary engineering efforts and collaborating with logistics and design teams for a legal, manufacturable, and cost-effective strategy.</p>
+        </div>
+        <div class="leader-card">
+          <h3>General Body Member</h3>
+          <div class="org">American Society of Mechanical Engineers</div>
+          <div class="date">Sep 2023 – Present</div>
+          <p>Participate in weekly professional development events and networking sessions with top-tier engineering firms to enhance industry knowledge and career opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cert-section">
+    <div class="cert-inner">
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-badge">Six Sigma Yellow Belt</div>
+        <div class="cert-badge">CompTIA Network+</div>
+        <div class="cert-badge">NOCTI Security</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Want to see more?</h2>
+    <p>Download my full resume or check out my projects.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="resume.pdf" class="btn btn-primary">Download Resume</a>
+      <a href="projects.html" class="btn btn-primary">View Projects</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Dylan Burkey · <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.timeline-item, .leader-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
