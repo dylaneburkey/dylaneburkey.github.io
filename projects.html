@@ -210,6 +210,18 @@
       color: white;
     }
 
+    .project-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.02);
+    }
+
     /* CTA Section */
     .cta-section {
       background: var(--text);
@@ -279,6 +291,7 @@
     <div class="projects-inner">
 
       <article class="project-card">
+        <img src="./robot.jpg" alt="ME 2110 Autonomous Robot" class="project-image" />
         <div class="project-header">
           <div>
             <h2>ME 2110 Autonomous Robot</h2>
@@ -337,6 +350,7 @@
       </article>
 
       <article class="project-card">
+        <img src="./manufacturing.jpg" alt="Manufacturing Process Optimization" class="project-image" />
         <div class="project-header">
           <div>
             <h2>Manufacturing Process Optimization</h2>
