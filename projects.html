@@ -4,234 +4,399 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Dylan Burkey</title>
-  <meta name="description" content="Projects by Dylan Burkey — robotics, aviation build coordination, and process engineering." />
+  <meta name="description" content="Engineering projects by Dylan Burkey — robotics, aviation, and process engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0c0f;
-      --panel: rgba(255,255,255,.06);
-      --text:#e9eaee;
-      --muted: rgba(233,234,238,.72);
-      --muted2: rgba(233,234,238,.55);
-      --line: rgba(255,255,255,.12);
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius2: 26px;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #f8f9fa;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
     }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(900px 600px at 20% 10%, rgba(255,255,255,.08), transparent 60%),
-                  radial-gradient(900px 600px at 80% 40%, rgba(255,255,255,.05), transparent 55%),
-                  var(--bg);
+
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
       color: var(--text);
-    }
-    a{ color: var(--text); text-decoration:none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
-    .wrap{ max-width: 1040px; margin: 0 auto; padding: 38px 18px 70px; }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      position: sticky; top: 0;
-      padding: 14px 0;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,12,15,.86), rgba(11,12,15,.35));
-      z-index: 5;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; }
-    .dot{
-      width: 10px; height: 10px; border-radius:999px;
-      background: rgba(255,255,255,.85);
-      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
-    }
-    .brand b{ font-weight: 650; }
-    .nav{ display:flex; gap: 14px; flex-wrap: wrap; justify-content:flex-end; }
-    .nav a{
-      font-size: 13px; color: var(--muted);
-      padding: 7px 10px; border-radius: 999px;
-      border: 1px solid transparent;
-    }
-    .nav a:hover{
-      color: var(--text);
-      border-color: var(--line);
-      text-decoration:none;
-      background: rgba(255,255,255,.04);
+      line-height: 1.6;
     }
 
-    .header{
-      margin-top: 22px;
-      padding: 22px 22px 18px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-    }
-    .robot-img{
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      margin-bottom: 18px;
-    }
-    .kicker{ color: var(--muted2); font-size: 13px; text-transform: uppercase; letter-spacing: .18em; }
-    h1{ margin: 10px 0 10px; font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; }
-    .subtitle{ margin: 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
+    a { color: var(--accent); text-decoration: none; transition: all 0.2s ease; }
+    a:hover { color: var(--accent-hover); }
 
-    .grid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
     }
-    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after { width: 100%; }
 
-    .card{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding: 18px;
+    /* Page Header */
+    .page-header {
+      padding: 10rem 2rem 4rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 50%, #f0f4ff 100%);
+      text-align: center;
     }
-    .card h2{ margin: 0 0 10px; font-size: 16px; letter-spacing: -.01em; }
-    .card p{ margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .bullets{
-      margin: 0;
-      padding-left: 16px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.6s ease-out;
     }
-    .tags{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 12px; }
-    .tag{
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 7px 10px;
-      background: rgba(255,255,255,.03);
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeInUp 0.6s ease-out 0.1s both;
     }
-    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-size: 14px;
-    }
-    .btn:hover{ background: rgba(255,255,255,.06); text-decoration:none; }
 
-    .footer{
-      margin-top: 26px;
-      color: var(--muted2);
-      font-size: 12px;
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
+    /* Projects Section */
+    .projects-section { padding: 5rem 2rem; }
+    .projects-inner { max-width: 1000px; margin: 0 auto; }
+
+    .project-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      gap: 1rem;
     }
-    .footer a{ color: var(--muted); }
+    .project-card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-subtitle {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .project-date {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .project-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-highlights h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .highlight-list {
+      list-style: none;
+    }
+    .highlight-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .highlight-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .highlight-list li strong { color: var(--text); }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .project-tag {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .project-tag:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--text);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-section h2 { color: white; font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-size: 1.1rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    .btn-primary { background: white; color: var(--text); }
+    .btn-primary:hover { background: var(--bg); transform: translateY(-2px); color: var(--text); }
+
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.8); }
+    footer a:hover { color: white; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      .page-header h1 { font-size: 2.25rem; }
+      .project-header { flex-direction: column; }
+      .project-card { padding: 1.75rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.85rem; }
+    }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <div class="dot"></div>
-        <div><b>Dylan Burkey</b></div>
-      </div>
-      <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="projects.html" style="color: rgba(233,234,238,.95);">Projects</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Dylan Burkey</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html" class="active">Projects</a>
         <a href="resume.pdf">Resume</a>
-        <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+  </nav>
 
-    <section class="header">
-      <img class="robot-img" src="./robot.jpg" alt="Robot" />
-      <div class="kicker">Selected Work</div>
-      <h1>Projects</h1>
-      <p class="subtitle">
-        A few builds and process-focused projects. If you want, I can also add screenshots, diagrams, and a "results" section for each.
-      </p>
-    </section>
+  <header class="page-header">
+    <h1>Projects</h1>
+    <p>Hands-on engineering work — from autonomous robots to aircraft builds to manufacturing systems</p>
+  </header>
 
-    <section class="grid">
-      <div class="card">
-        <h2>ME 2110 Autonomous Robot</h2>
-        <p>Autonomous robot build focused on reliability, cycle time, and modular subsystem design.</p>
-        <ul class="bullets">
-          <li>Designed and iterated mechanical subsystems with rapid prototyping (CAD + 3D printing + laser cutting).</li>
-          <li>System integration and testing to improve repeatability and reduce failure modes under time constraints.</li>
-          <li>Packaged design decisions into a clean build process: test plan, iteration logs, and repeatable assembly steps.</li>
-        </ul>
-        <div class="tags">
-          <div class="tag">Design for Reliability</div>
-          <div class="tag">Prototyping</div>
-          <div class="tag">Systems Integration</div>
+  <section class="projects-section">
+    <div class="projects-inner">
+
+      <article class="project-card">
+        <div class="project-header">
+          <div>
+            <h2>ME 2110 Autonomous Robot</h2>
+            <div class="project-subtitle">Georgia Tech Creative Decisions & Design</div>
+          </div>
+          <span class="project-date">Aug – Dec 2025</span>
         </div>
-      </div>
-
-      <div class="card">
-        <h2>Yellow Jacket Aviation — RV-14 Build</h2>
-        <p>Early-stage build coordination and process planning to prevent shortages and streamline assembly.</p>
-        <ul class="bullets">
-          <li>Structured a build plan: BOM breakdown, sourcing strategy, kitting, and sequencing to reduce downtime.</li>
-          <li>Coordinated across teams (structures/systems/logistics) to standardize procedures and solve constraints fast.</li>
-          <li>Established a repeatable "build ops" approach (parts flow → work instructions → QA checks).</li>
-        </ul>
-        <div class="tags">
-          <div class="tag">Process Coordination</div>
-          <div class="tag">BOM / Sourcing</div>
-          <div class="tag">Standard Work</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Smurfit WestRock — Engineering</h2>
-        <p>Manufacturing/process engineering work aimed at measurable savings, throughput, and stability.</p>
-        <ul class="bullets">
-          <li>Process analysis across corrugated manufacturing/support systems to reduce waste and improve utilization.</li>
-          <li>Reliability + operations improvements targeting uptime, quality consistency, and constraint reduction.</li>
-          <li>Built data-driven tooling for decision-making (inventory optimization / tracking).</li>
-        </ul>
-        <div class="tags">
-          <div class="tag">Lean / CI</div>
-          <div class="tag">Uptime / OEE</div>
-          <div class="tag">Cost Savings</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Want a deeper version?</h2>
-        <p>
-          I can turn each project into a "case study" section with: problem → approach → results → what I learned.
-          Also easy to add images (robot photos, build pictures, charts).
+        <p class="project-description">
+          Designed, fabricated, and programmed an autonomous robot for Georgia Tech's ME 2110 competition. Our team placed <strong>2nd overall out of 70+ teams</strong>, with the robot completing five mechanical tasks in under 40 seconds.
         </p>
-        <div class="btnrow">
-          <a class="btn" href="resume.pdf">View Resume</a>
-          <a class="btn" href="mailto:dburkey3@gatech.edu">Email Me</a>
+        <div class="project-highlights">
+          <h4>Key Contributions</h4>
+          <ul class="highlight-list">
+            <li>Integrated <strong>Arduino-based mechatronic control</strong> with custom modular subsystems for reliable autonomous operation</li>
+            <li>Applied <strong>DFM/DFA and FMEA</strong> principles to optimize subsystem reliability and assembly efficiency</li>
+            <li>Utilized iterative prototyping with CAD, digital fabrication, 3D printing, and laser cutting</li>
+            <li>Designed mechanical systems under tight time constraints with focus on repeatability</li>
+          </ul>
         </div>
-      </div>
-    </section>
+        <div class="project-tags">
+          <span class="project-tag">CAD</span>
+          <span class="project-tag">Arduino</span>
+          <span class="project-tag">Mechatronics</span>
+          <span class="project-tag">DFM/DFA</span>
+          <span class="project-tag">FMEA</span>
+          <span class="project-tag">3D Printing</span>
+        </div>
+      </article>
 
-    <div class="footer">
-      <div>© <span id="y"></span> Dylan Burkey</div>
-      <div>
-        <a href="index.html">Home</a> · <a href="resume.pdf">Resume</a> ·
-        <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+      <article class="project-card">
+        <div class="project-header">
+          <div>
+            <h2>RV-14 Aircraft Build</h2>
+            <div class="project-subtitle">Yellow Jacket Aviation — R&D Team</div>
+          </div>
+          <span class="project-date">May 2025 – Present</span>
+        </div>
+        <p class="project-description">
+          Leading early-stage fabrication readiness planning for an FAA-compliant RV-14 aircraft build. Responsible for coordinating cross-functional teams and establishing build processes from the ground up.
+        </p>
+        <div class="project-highlights">
+          <h4>Key Contributions</h4>
+          <ul class="highlight-list">
+            <li>Developed and owned <strong>fabrication readiness plan</strong> defining part sourcing, BOM, kitting approach, and build sequencing</li>
+            <li>Coordinated <strong>structures, systems, and logistics teams</strong> to track part readiness and standardize procedures</li>
+            <li>Resolved early supply and process constraints to improve build flow and reduce rework risk</li>
+            <li>Established documentation standards for repeatable, quality-controlled assembly</li>
+          </ul>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Process Planning</span>
+          <span class="project-tag">BOM Management</span>
+          <span class="project-tag">Cross-Functional Coordination</span>
+          <span class="project-tag">Quality Control</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-header">
+          <div>
+            <h2>Manufacturing Process Optimization</h2>
+            <div class="project-subtitle">Smurfit Westrock — Engineering Internship</div>
+          </div>
+          <span class="project-date">May – Aug 2025</span>
+        </div>
+        <p class="project-description">
+          Led process and mechanical engineering analysis across corrugated manufacturing systems, identifying opportunities for significant cost savings and operational improvements.
+        </p>
+        <div class="project-highlights">
+          <h4>Key Contributions</h4>
+          <ul class="highlight-list">
+            <li>Projected <strong>$275K in annual savings</strong> through waste reduction and equipment utilization improvements</li>
+            <li>Developed data-driven inventory optimization system using <strong>Oracle JD Edwards API</strong> integration</li>
+            <li>Reduced excess stock in a <strong>$13.52M inventory by 23%</strong> while supporting continuous operations</li>
+            <li>Integrated lean manufacturing and 5S practices to improve machine uptime</li>
+          </ul>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Lean Manufacturing</span>
+          <span class="project-tag">Process Analysis</span>
+          <span class="project-tag">Data Analytics</span>
+          <span class="project-tag">Inventory Optimization</span>
+          <span class="project-tag">5S</span>
+        </div>
+      </article>
+
     </div>
-  </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Interested in working together?</h2>
+    <p>I'm always looking for new challenges and opportunities to learn.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:dburkey3@gatech.edu" class="btn btn-primary">Get in Touch</a>
+      <a href="resume.pdf" class="btn btn-primary">Download Resume</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Dylan Burkey · <a href="https://www.linkedin.com/in/dylaneburkey/" target="_blank">LinkedIn</a></p>
+  </footer>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
   </script>
 </body>
 </html>
