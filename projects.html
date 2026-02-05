@@ -67,6 +67,14 @@
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
     }
+    .robot-img{
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 18px;
+    }
     .kicker{ color: var(--muted2); font-size: 13px; text-transform: uppercase; letter-spacing: .18em; }
     h1{ margin: 10px 0 10px; font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; }
     .subtitle{ margin: 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
@@ -129,7 +137,6 @@
     .footer a{ color: var(--muted); }
   </style>
 </head>
-<img src="robot.jpg" alt="Robot" style="width:100%; border-radius:16px; border:1px solid rgba(255,255,255,.12); margin:10px 0;">
 
 <body>
   <div class="wrap">
@@ -147,10 +154,11 @@
     </div>
 
     <section class="header">
+      <img class="robot-img" src="./robot.jpg" alt="Robot" />
       <div class="kicker">Selected Work</div>
       <h1>Projects</h1>
       <p class="subtitle">
-        A few builds and process-focused projects. If you want, I can also add screenshots, diagrams, and a “results” section for each.
+        A few builds and process-focused projects. If you want, I can also add screenshots, diagrams, and a "results" section for each.
       </p>
     </section>
 
@@ -176,7 +184,7 @@
         <ul class="bullets">
           <li>Structured a build plan: BOM breakdown, sourcing strategy, kitting, and sequencing to reduce downtime.</li>
           <li>Coordinated across teams (structures/systems/logistics) to standardize procedures and solve constraints fast.</li>
-          <li>Established a repeatable “build ops” approach (parts flow → work instructions → QA checks).</li>
+          <li>Established a repeatable "build ops" approach (parts flow → work instructions → QA checks).</li>
         </ul>
         <div class="tags">
           <div class="tag">Process Coordination</div>
@@ -203,7 +211,7 @@
       <div class="card">
         <h2>Want a deeper version?</h2>
         <p>
-          I can turn each project into a “case study” section with: problem → approach → results → what I learned.
+          I can turn each project into a "case study" section with: problem → approach → results → what I learned.
           Also easy to add images (robot photos, build pictures, charts).
         </p>
         <div class="btnrow">
