@@ -17,13 +17,18 @@
         body {
             font-family: 'Roboto', sans-serif;
             background: #d4d4d4;
-            overflow: hidden;
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        /* === TOP MENU BAR === */
+        .main-area {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+        }
         .menu-bar {
             background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
             border-bottom: 1px solid #999;
@@ -111,11 +116,6 @@
         }
 
         /* === MAIN LAYOUT === */
-        .main-area {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
 
         /* === FEATURE TREE (LEFT PANEL) === */
         .feature-tree {
@@ -165,36 +165,35 @@
         .viewport {
             flex: 1;
             background: #b8b8b8;
-            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: auto;
+            overflow: hidden;
+            padding: 10px;
         }
 
         .drawing-sheet {
             background: #fff;
             border: 1px solid #333;
-            width: 1000px;
-            min-height: 700px;
+            width: 1100px;
             position: relative;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
             padding: 20px;
             display: flex;
             flex-direction: column;
+            transform-origin: center center;
         }
 
         /* === DRAWING CONTENT === */
         .drawing-content {
-            flex: 1;
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
             color: #000;
-            padding: 15px;
+            padding: 10px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto auto auto;
-            gap: 25px;
+            gap: 15px;
         }
 
         .drawing-section {
@@ -209,13 +208,13 @@
             letter-spacing: 1px;
             border-bottom: 1px solid #000;
             padding-bottom: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .drawing-section p,
         .drawing-section li {
             font-size: 11px;
-            line-height: 1.7;
+            line-height: 1.6;
             font-family: 'Courier Prime', monospace;
         }
 
@@ -235,12 +234,21 @@
             left: 0;
         }
 
+        .section-projects ul li::before {
+            content: '';
+        }
+
+        .section-projects ul li {
+            padding-left: 0;
+        }
+
         .exp-item {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .exp-item .company {
             font-weight: bold;
+            font-size: 11px;
         }
 
         .exp-item .details {
@@ -250,27 +258,33 @@
 
         .section-about {
             grid-column: 1 / -1;
-            padding-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #000;
-            margin-bottom: 5px;
         }
 
-        .section-experience {
+        .section-left {
             grid-column: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .section-projects {
             grid-column: 2;
         }
 
+        .section-involvement {
+            margin-top: 10px;
+        }
+
         .section-contact {
             grid-column: 1 / -1;
+            padding-right: 320px;
         }
 
         .contact-line {
             display: inline-block;
-            margin-right: 30px;
-            font-size: 11px;
+            margin-right: 20px;
+            font-size: 10px;
         }
 
         .contact-line a {
@@ -280,8 +294,8 @@
 
         .resume-link {
             display: inline-block;
-            margin-top: 8px;
-            font-size: 11px;
+            margin-top: 4px;
+            font-size: 10px;
             color: #000;
             text-decoration: underline;
         }
@@ -292,9 +306,9 @@
             bottom: 0;
             right: 0;
             border: 2px solid #000;
-            width: 340px;
+            width: 300px;
             font-family: 'Courier Prime', monospace;
-            font-size: 10px;
+            font-size: 9px;
         }
 
         .tb-row {
@@ -323,10 +337,10 @@
         }
 
         .tb-cell.title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             text-align: center;
-            padding: 8px 6px;
+            padding: 6px 6px;
         }
 
         .tb-cell.large {
@@ -388,7 +402,7 @@
 
     <!-- Menu Bar -->
     <div class="menu-bar">
-        <span class="sw-logo">&#9632; SolidWorks</span>
+        <span class="sw-logo">&#9632; Dylan Burkey</span>
         <span>File</span>
         <span>Edit</span>
         <span>View</span>
@@ -442,11 +456,7 @@
                 <div class="tree-indent">
                     <div class="tree-item">
                         <span class="tree-icon doc">&#9724;</span>
-                        Sheet Format1
-                    </div>
-                    <div class="tree-item">
-                        <span class="tree-icon doc">&#9724;</span>
-                        About View
+                        About Dylan View
                     </div>
                     <div class="tree-item">
                         <span class="tree-icon doc">&#9724;</span>
@@ -455,6 +465,10 @@
                     <div class="tree-item">
                         <span class="tree-icon doc">&#9724;</span>
                         Projects View
+                    </div>
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        Involvement View
                     </div>
                     <div class="tree-item">
                         <span class="tree-icon doc">&#9724;</span>
@@ -473,37 +487,50 @@
 
                     <!-- About -->
                     <div class="drawing-section section-about">
-                        <h3>About</h3>
+                        <h3>About Dylan</h3>
                         <p>
-                            Mechanical Engineering student at Georgia Institute of Technology
-                            with a concentration in Manufacturing. Experienced in process optimization,
-                            statistical analysis, CAD design, and precision measurement. Graduating May 2027.
+                            Mechanical Engineering @ Georgia Tech with a Manufacturing concentration. 
+                            Graduating May 2027.
                         </p>
                         <br>
                         <p>
-                            Passionate about driving continuous improvement in high-volume production
-                            environments through data-driven decision making and cross-functional collaboration.
-                            Proficient in SOLIDWORKS, Creo, Lean Six Sigma, and precision instruments.
+                            Passion for innovative engineering solutions in manufacturing, design, and robotics.
+                        <p>
+                        <br>
+                        <p>
+                            Outside of school, you'll find me hiking, traveling, cooking, listneing to new music, or working on 'stuff'. 
                         </p>
                     </div>
 
-                    <!-- Experience -->
-                    <div class="drawing-section section-experience">
-                        <h3>Experience</h3>
-                        <div class="exp-item">
-                            <div class="company">Smurfit Westrock</div>
-                            <div class="details">Manufacturing Engineering Intern</div>
-                            <div class="details">Atlanta, GA | May 2025 - Aug 2025</div>
+                    <!-- Left Column: Experience + Involvement -->
+                    <div class="section-left">
+                        <div class="drawing-section">
+                            <h3>Experience</h3>
+                            <div class="exp-item">
+                                <div class="company">Amazon</div>
+                                <div class="details">Area Manager Intern</div>
+                                <div class="details">Miami, FL | May 2026 - Aug 2026</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="company">Smurfit Westrock</div>
+                                <div class="details">Manufacturing Engineering Intern</div>
+                                <div class="details">Atlanta, GA | May 2025 - Aug 2025</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="company">Snapping Shoals EMC</div>
+                                <div class="details">Automotive Intern</div>
+                                <div class="details">Covington, GA | Aug 2022 - May 2023</div>
+                            </div>
                         </div>
-                        <div class="exp-item">
-                            <div class="company">Amazon Robotics</div>
-                            <div class="details">Process Assistant / Engineering Intern</div>
-                            <div class="details">Atlanta, GA | May 2024 - Aug 2024</div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="company">Snapping Shoals EMC</div>
-                            <div class="details">Automotive Intern</div>
-                            <div class="details">Covington, GA | Aug 2022 - May 2023</div>
+
+                        <div class="drawing-section section-involvement">
+                            <h3>Involvement</h3>
+                            <ul>
+                                <li>Yellow Jacket Aviation - Manufacturing Lead</li>
+                                <li>Curious Cardinals - Technical Mentor</li>
+                                <li>American Society of Mechanical Engineers - Member</li>
+                                <li>Kappa Sigma Fraternity - Social Chair</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -511,8 +538,14 @@
                     <div class="drawing-section section-projects">
                         <h3>Projects</h3>
                         <ul>
-                            <li>ME 2110 Autonomous Robot - Placed 2nd of 70+ teams in autonomous robotics competition</li>
-                            <li>RV-14 Aircraft Build - Developed fabrication plans for FAA-compliant aircraft assembly</li>
+                            <li><strong>Toothless - Autonomous Robot:</strong> Designed and fabricated a mobile autonomous robot with custom mechanical/electrical subsystems and Arduino based control. 
+                                Placed 2nd of 70+ teams in autonomous robotics competition</li>
+                                <br>
+                            <li><strong>Pioneer DDJ-FLX10 Rekordbox LCD Display:</strong> Created a custom touchscreen display module for the DDJ-FLX10 to provide an ergonomic Rekordbox interface and seamless navigation</li>
+                            <br>
+                            <li><strong>CWRU Bearing Analysis:</strong> Used MATLAB to perform bearing vibration signal diagnostics, RMS regression modeling, motor speed estimation, and RK4/Euler prognostics for useful life prediction.</li>
+                            <br>
+                            <li><strong>Electronics Mini Projects:</strong> Pulse Width Modulation, Linear Power supply w/Audio Amplifier, Microphone Amplifier</li>
                         </ul>
                     </div>
 
@@ -534,7 +567,7 @@
                         <div class="tb-cell label">Drawn By</div>
                         <div class="tb-cell">D. Burkey</div>
                         <div class="tb-cell label">Date</div>
-                        <div class="tb-cell">2025</div>
+                        <div class="tb-cell">2026</div>
                     </div>
                     <div class="tb-row">
                         <div class="tb-cell label">Checked</div>
@@ -561,11 +594,28 @@
     <!-- Status Bar -->
     <div class="status-bar">
         <span class="sheet-tab">&#9654; Sheet1</span>
-        <span>SolidWorks Education Edition - Personal Use Only</span>
+        <span>Education Edition - Personal Use Only</span>
         <span style="margin-left:auto;">1:1</span>
         <span>mm</span>
         <span>Editing Sheet1</span>
     </div>
+
+    <script>
+        function scaleSheet() {
+            const viewport = document.querySelector('.viewport');
+            const sheet = document.querySelector('.drawing-sheet');
+            // Reset scale to measure natural size
+            sheet.style.transform = 'scale(1)';
+            const vw = viewport.clientWidth - 20;
+            const vh = viewport.clientHeight - 20;
+            const sw = sheet.offsetWidth;
+            const sh = sheet.offsetHeight;
+            const scale = Math.min(vw / sw, vh / sh);
+            sheet.style.transform = 'scale(' + scale + ')';
+        }
+        window.addEventListener('load', scaleSheet);
+        window.addEventListener('resize', scaleSheet);
+    </script>
 
 </body>
 </html>
