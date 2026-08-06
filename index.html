@@ -3,24 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dylan Burkey | Mechanical Engineering</title>
+    <title>Dylan Burkey | Engineering Drawing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tekton+Pro&family=Courier+Prime&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --blueprint-bg: #0a1628;
-            --grid-color: rgba(65, 145, 255, 0.08);
-            --grid-color-major: rgba(65, 145, 255, 0.15);
-            --line-color: #4191ff;
-            --line-dim: rgba(65, 145, 255, 0.5);
-            --text-primary: #c8deff;
-            --text-bright: #ffffff;
-            --accent: #4191ff;
-            --accent-glow: rgba(65, 145, 255, 0.3);
-            --section-bg: rgba(10, 22, 40, 0.85);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -28,520 +15,548 @@
         }
 
         body {
-            font-family: 'Share Tech Mono', 'Courier Prime', monospace;
-            background-color: var(--blueprint-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Blueprint grid background */
-        .blueprint-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
-                linear-gradient(var(--grid-color-major) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color-major) 1px, transparent 1px);
-            background-size:
-                20px 20px,
-                20px 20px,
-                100px 100px,
-                100px 100px;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 30px;
-        }
-
-        /* Title Block (like bottom-right of engineering drawing) */
-        .title-block {
-            border: 2px solid var(--line-color);
-            padding: 30px;
-            margin-bottom: 50px;
-            position: relative;
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .title-block::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border: 1px solid var(--line-dim);
-            pointer-events: none;
-        }
-
-        .title-block::after {
-            content: 'SHEET 1 OF 1';
-            position: absolute;
-            bottom: -20px;
-            right: 10px;
-            font-size: 10px;
-            color: var(--line-dim);
-            letter-spacing: 2px;
-        }
-
-        .headshot-frame {
-            width: 130px;
-            height: 130px;
-            border: 2px solid var(--line-color);
-            border-radius: 50%;
+            font-family: 'Roboto', sans-serif;
+            background: #d4d4d4;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* === TOP MENU BAR === */
+        .menu-bar {
+            background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+            border-bottom: 1px solid #999;
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 24px;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .menu-bar .sw-logo {
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+
+        .menu-bar span {
+            padding: 2px 6px;
+            cursor: default;
+        }
+
+        .menu-bar span:hover {
+            background: #b8d4f0;
+        }
+
+        /* === TOOLBAR === */
+        .toolbar {
+            background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 100%);
+            border-bottom: 1px solid #999;
+            padding: 3px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 32px;
+        }
+
+        .toolbar-btn {
+            width: 24px;
+            height: 24px;
+            background: #f5f5f5;
+            border: 1px solid #aaa;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #555;
+            cursor: default;
+        }
+
+        .toolbar-sep {
+            width: 1px;
+            height: 20px;
+            background: #aaa;
+            margin: 0 3px;
+        }
+
+        /* === TAB BAR === */
+        .tab-bar {
+            background: #c8c8c8;
+            border-bottom: 1px solid #999;
+            padding: 0 8px;
+            display: flex;
+            align-items: flex-end;
+            height: 24px;
+        }
+
+        .tab {
+            padding: 3px 12px;
+            font-size: 11px;
+            background: #e0e0e0;
+            border: 1px solid #999;
+            border-bottom: none;
+            border-radius: 3px 3px 0 0;
+            margin-right: 2px;
+            color: #333;
+        }
+
+        .tab.active {
+            background: #fff;
+            font-weight: 500;
+        }
+
+        /* === MAIN LAYOUT === */
+        .main-area {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* === FEATURE TREE (LEFT PANEL) === */
+        .feature-tree {
+            width: 200px;
+            background: #fff;
+            border-right: 1px solid #999;
+            padding: 8px;
+            font-size: 11px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .tree-item {
+            padding: 2px 0 2px 12px;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #333;
+        }
+
+        .tree-item.root {
+            padding-left: 0;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .tree-icon {
+            width: 14px;
+            height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            flex-shrink: 0;
+        }
+
+        .tree-icon.folder { color: #c8a800; }
+        .tree-icon.doc { color: #4488cc; }
+        .tree-icon.anno { color: #cc4444; }
+
+        .tree-indent {
+            padding-left: 16px;
+        }
+
+        /* === DRAWING VIEWPORT === */
+        .viewport {
+            flex: 1;
+            background: #b8b8b8;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .drawing-sheet {
+            background: #fff;
+            border: 1px solid #333;
+            width: 1000px;
+            min-height: 700px;
+            position: relative;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* === DRAWING CONTENT === */
+        .drawing-content {
+            flex: 1;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: #000;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 25px;
+        }
+
+        .drawing-section {
             position: relative;
         }
 
-        .headshot-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .headshot-frame::after {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border: 1px dashed var(--line-dim);
-            border-radius: 50%;
-        }
-
-        .title-info h1 {
-            font-size: 2.2rem;
-            color: var(--text-bright);
-            letter-spacing: 3px;
+        .drawing-section h3 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 13px;
+            font-weight: normal;
             text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .title-info .subtitle {
-            font-size: 0.95rem;
-            color: var(--accent);
             letter-spacing: 1px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
             margin-bottom: 10px;
         }
 
-        .title-info .meta {
-            font-size: 0.75rem;
-            color: var(--line-dim);
-            letter-spacing: 1px;
+        .drawing-section p,
+        .drawing-section li {
+            font-size: 11px;
+            line-height: 1.7;
+            font-family: 'Courier Prime', monospace;
         }
 
-        .title-info .meta span {
-            margin-right: 20px;
-        }
-
-        /* Section styling */
-        .section {
-            border: 1px solid var(--line-dim);
-            padding: 30px;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section::before {
-            content: attr(data-section);
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: var(--blueprint-bg);
-            padding: 0 10px;
-            font-size: 0.7rem;
-            color: var(--accent);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        /* Dimension lines */
-        .section::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: -25px;
-            width: 1px;
-            height: calc(100% - 20px);
-            border-left: 1px dashed var(--grid-color-major);
-        }
-
-        .section h2 {
-            font-size: 1.1rem;
-            color: var(--text-bright);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--grid-color-major);
-        }
-
-        .section h2::before {
-            content: '§ ';
-            color: var(--accent);
-        }
-
-        .section p, .section li {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: var(--text-primary);
-        }
-
-        /* Experience entries */
-        .experience-entry {
-            margin-bottom: 25px;
-            padding-left: 20px;
-            border-left: 2px solid var(--accent);
-            position: relative;
-        }
-
-        .experience-entry::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            border: 2px solid var(--accent);
-            background: var(--blueprint-bg);
-            border-radius: 50%;
-        }
-
-        .experience-entry h3 {
-            font-size: 0.95rem;
-            color: var(--text-bright);
-            margin-bottom: 3px;
-        }
-
-        .experience-entry .role-meta {
-            font-size: 0.75rem;
-            color: var(--accent);
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .experience-entry ul {
+        .drawing-section ul {
             list-style: none;
             padding: 0;
         }
 
-        .experience-entry ul li {
-            padding-left: 15px;
+        .drawing-section ul li {
+            padding-left: 10px;
             position: relative;
-            margin-bottom: 5px;
         }
 
-        .experience-entry ul li::before {
-            content: '▸';
+        .drawing-section ul li::before {
+            content: '-';
             position: absolute;
             left: 0;
-            color: var(--accent);
         }
 
-        /* Skills / specs table */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        .exp-item {
+            margin-bottom: 8px;
         }
 
-        .spec-item {
-            border: 1px solid var(--grid-color-major);
-            padding: 12px 15px;
-            position: relative;
+        .exp-item .company {
+            font-weight: bold;
         }
 
-        .spec-item .spec-label {
-            font-size: 0.65rem;
-            color: var(--line-dim);
+        .exp-item .details {
+            font-size: 10px;
+            color: #333;
+        }
+
+        .section-about {
+            grid-column: 1 / -1;
+        }
+
+        .section-experience {
+            grid-column: 1;
+        }
+
+        .section-projects {
+            grid-column: 2;
+        }
+
+        .section-contact {
+            grid-column: 1 / -1;
+        }
+
+        .contact-line {
+            display: inline-block;
+            margin-right: 30px;
+            font-size: 11px;
+        }
+
+        .contact-line a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .resume-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* === TITLE BLOCK (BOTTOM RIGHT) === */
+        .title-block {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 2px solid #000;
+            width: 340px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 10px;
+        }
+
+        .tb-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .tb-row:last-child {
+            border-bottom: none;
+        }
+
+        .tb-cell {
+            padding: 3px 6px;
+            border-right: 1px solid #000;
+            flex: 1;
+        }
+
+        .tb-cell:last-child {
+            border-right: none;
+        }
+
+        .tb-cell.label {
+            font-size: 8px;
+            color: #666;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
         }
 
-        .spec-item .spec-value {
-            font-size: 0.85rem;
-            color: var(--text-bright);
+        .tb-cell.title {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 6px;
         }
 
-        /* Contact section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+        .tb-cell.large {
+            flex: 2;
         }
 
-        .contact-item {
+        /* === BOTTOM STATUS BAR === */
+        .status-bar {
+            background: linear-gradient(180deg, #e0e0e0 0%, #c8c8c8 100%);
+            border-top: 1px solid #999;
+            height: 22px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border: 1px solid var(--grid-color-major);
-            transition: border-color 0.3s ease, background 0.3s ease;
+            padding: 0 8px;
+            font-size: 10px;
+            color: #555;
+            gap: 20px;
         }
 
-        .contact-item:hover {
-            border-color: var(--accent);
-            background: var(--accent-glow);
+        .status-bar .sheet-tab {
+            background: #fff;
+            border: 1px solid #999;
+            padding: 1px 8px;
+            font-size: 10px;
+            border-radius: 2px;
         }
 
-        .contact-item a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item:hover a {
-            color: var(--text-bright);
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            stroke: var(--accent);
-            flex-shrink: 0;
-        }
-
-        /* Resume button */
-        .resume-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            border: 2px solid var(--accent);
-            color: var(--text-bright);
-            text-decoration: none;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .resume-btn:hover {
-            background: var(--accent);
-            color: var(--blueprint-bg);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .resume-btn::before {
-            content: '↓ ';
-        }
-
-        /* Revision table */
-        .revision-table {
-            margin-top: 50px;
-            border: 1px solid var(--line-dim);
-            font-size: 0.65rem;
-            color: var(--line-dim);
-            letter-spacing: 1px;
-        }
-
-        .revision-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .revision-table th,
-        .revision-table td {
-            padding: 6px 12px;
-            border: 1px solid var(--grid-color-major);
-            text-align: left;
-        }
-
-        .revision-table th {
-            color: var(--accent);
-            text-transform: uppercase;
-        }
-
-        /* Corner markers */
-        .corner-mark {
-            position: fixed;
-            color: var(--line-dim);
-            font-size: 0.6rem;
-            letter-spacing: 2px;
-            z-index: 2;
-        }
-        .corner-mark.tl { top: 15px; left: 15px; }
-        .corner-mark.tr { top: 15px; right: 15px; }
-        .corner-mark.bl { bottom: 15px; left: 15px; }
-        .corner-mark.br { bottom: 15px; right: 15px; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .title-block {
+        /* === RESPONSIVE === */
+        @media (max-width: 1100px) {
+            .drawing-sheet {
+                width: 95%;
+                min-height: auto;
+            }
+            .drawing-content {
                 grid-template-columns: 1fr;
-                justify-items: center;
-                text-align: center;
             }
-            .title-info .meta span {
-                display: block;
-                margin-right: 0;
-                margin-bottom: 3px;
+            .section-about,
+            .section-experience,
+            .section-projects,
+            .section-contact {
+                grid-column: 1;
             }
-            .container {
-                padding: 20px 15px;
+            .title-block {
+                position: relative;
+                width: 100%;
+                margin-top: 20px;
             }
-            .corner-mark { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .feature-tree { display: none; }
+            .toolbar { display: none; }
+            .tab-bar { display: none; }
+            .viewport { padding: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="blueprint-grid"></div>
 
-    <!-- Corner registration marks -->
-    <span class="corner-mark tl">+ DWG-001</span>
-    <span class="corner-mark tr">SCALE: 1:1 +</span>
-    <span class="corner-mark bl">+ UNITS: MM</span>
-    <span class="corner-mark br">REV A +</span>
-
-    <div class="container">
-        <!-- Title Block -->
-        <header class="title-block">
-            <div class="headshot-frame">
-                <img src="headshot.PNG" alt="Dylan Burkey headshot">
-            </div>
-            <div class="title-info">
-                <h1>Dylan Burkey</h1>
-                <div class="subtitle">Mechanical Engineering · Manufacturing Concentration</div>
-                <div class="meta">
-                    <span>GEORGIA INSTITUTE OF TECHNOLOGY</span>
-                    <span>CLASS OF 2027</span>
-                    <span>ATLANTA, GA</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- About Section -->
-        <section class="section" data-section="DETAIL A — ABOUT">
-            <h2>About</h2>
-            <p>
-                Mechanical Engineering student at Georgia Tech specializing in Manufacturing.
-                Experienced in process optimization, statistical analysis, CAD design, and precision measurement.
-                Passionate about driving continuous improvement in high-volume production environments through
-                data-driven decision making and cross-functional collaboration.
-            </p>
-        </section>
-
-        <!-- Experience Section -->
-        <section class="section" data-section="DETAIL B — EXPERIENCE">
-            <h2>Experience</h2>
-
-            <div class="experience-entry">
-                <h3>Manufacturing Engineering Intern</h3>
-                <div class="role-meta">Smurfit Westrock · Summer 2025</div>
-                <ul>
-                    <li>Designed and executed test plans on die cutter production runs; analyzed wear patterns using statistical methods</li>
-                    <li>Implemented data-driven replacement schedule reducing downtime by 25%</li>
-                    <li>Created and validated engineering drawings in SOLIDWORKS against design standards for manufacturability</li>
-                    <li>Built inventory management tool that cut stockout-related downtime by 30%</li>
-                </ul>
-            </div>
-
-            <div class="experience-entry">
-                <h3>Process Assistant / Engineering Intern</h3>
-                <div class="role-meta">Amazon Robotics · Summer 2024</div>
-                <ul>
-                    <li>Commissioned new sensor hardware with Reliability & Maintenance Engineering, improving automated throughput by 8%</li>
-                    <li>Led cross-functional product introduction adopted across five facilities</li>
-                    <li>Directed 100+ associates daily in operations and process execution</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Skills / Specifications -->
-        <section class="section" data-section="DETAIL C — SPECIFICATIONS">
-            <h2>Technical Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">CAD</div>
-                    <div class="spec-value">SOLIDWORKS · Creo</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Methodology</div>
-                    <div class="spec-value">Lean Six Sigma</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Analysis</div>
-                    <div class="spec-value">Statistical Methods · Python</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Manufacturing</div>
-                    <div class="spec-value">Process Optimization · GD&T</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Instruments</div>
-                    <div class="spec-value">Precision Measurement</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Leadership</div>
-                    <div class="spec-value">Cross-functional Teams</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section" data-section="DETAIL D — CONTACT">
-            <h2>Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>
-                    </svg>
-                    <a href="mailto:dburkey3@gatech.edu">dburkey3@gatech.edu</a>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-                    </svg>
-                    <a href="tel:4043583445">(404) 358-3445</a>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                    </svg>
-                    <a href="https://linkedin.com/in/dylaneburkey" target="_blank">linkedin.com/in/dylaneburkey</a>
-                </div>
-            </div>
-
-            <a href="resumegithub.pdf" class="resume-btn" target="_blank">Download Resume</a>
-        </section>
-
-        <!-- Revision Table (fun detail) -->
-        <div class="revision-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rev</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Approved</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>A</td>
-                        <td>2025-07</td>
-                        <td>Initial release</td>
-                        <td>D. Burkey</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <span class="sw-logo">&#9632; SolidWorks</span>
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Insert</span>
+        <span>Tools</span>
+        <span>Window</span>
+        <span>Help</span>
     </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-btn">&#9634;</div>
+        <div class="toolbar-btn">&#9998;</div>
+        <div class="toolbar-btn">&#8635;</div>
+        <div class="toolbar-sep"></div>
+        <div class="toolbar-btn">&#9711;</div>
+        <div class="toolbar-btn">&#9645;</div>
+        <div class="toolbar-btn">&#9651;</div>
+        <div class="toolbar-sep"></div>
+        <div class="toolbar-btn">A</div>
+        <div class="toolbar-btn">&#8676;</div>
+        <div class="toolbar-btn">&#8677;</div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+        <div class="tab active">View Layout</div>
+        <div class="tab">Annotation</div>
+        <div class="tab">Sketch</div>
+        <div class="tab">Evaluate</div>
+    </div>
+
+    <!-- Main Area -->
+    <div class="main-area">
+
+        <!-- Feature Tree -->
+        <div class="feature-tree">
+            <div class="tree-item root">
+                <span class="tree-icon folder">&#9660;</span>
+                DYLANBURKEY
+            </div>
+            <div class="tree-indent">
+                <div class="tree-item">
+                    <span class="tree-icon anno">&#9670;</span>
+                    Annotations
+                </div>
+                <div class="tree-item">
+                    <span class="tree-icon folder">&#9660;</span>
+                    Sheet1
+                </div>
+                <div class="tree-indent">
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        Sheet Format1
+                    </div>
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        About View
+                    </div>
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        Experience View
+                    </div>
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        Projects View
+                    </div>
+                    <div class="tree-item">
+                        <span class="tree-icon doc">&#9724;</span>
+                        Contact View
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawing Viewport -->
+        <div class="viewport">
+            <div class="drawing-sheet">
+
+                <!-- Drawing Content -->
+                <div class="drawing-content">
+
+                    <!-- About -->
+                    <div class="drawing-section section-about">
+                        <h3>About</h3>
+                        <p>
+                            Mechanical Engineering student at Georgia Institute of Technology
+                            with a concentration in Manufacturing. Experienced in process optimization,
+                            statistical analysis, CAD design, and precision measurement. Graduating May 2027.
+                        </p>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="drawing-section section-experience">
+                        <h3>Experience</h3>
+                        <div class="exp-item">
+                            <div class="company">Smurfit Westrock</div>
+                            <div class="details">Manufacturing Engineering Intern</div>
+                            <div class="details">Atlanta, GA | May 2025 - Aug 2025</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="company">Amazon Robotics</div>
+                            <div class="details">Process Assistant / Engineering Intern</div>
+                            <div class="details">Atlanta, GA | May 2024 - Aug 2024</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="company">Snapping Shoals EMC</div>
+                            <div class="details">Automotive Intern</div>
+                            <div class="details">Covington, GA | Aug 2022 - May 2023</div>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="drawing-section section-projects">
+                        <h3>Projects</h3>
+                        <ul>
+                            <li>ME 2110 Autonomous Robot - Placed 2nd of 70+ teams in autonomous robotics competition</li>
+                            <li>RV-14 Aircraft Build - Developed fabrication plans for FAA-compliant aircraft assembly</li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="drawing-section section-contact">
+                        <h3>Contact</h3>
+                        <span class="contact-line"><a href="mailto:dburkey3@gatech.edu">dburkey3@gatech.edu</a></span>
+                        <span class="contact-line"><a href="tel:4043583445">(404) 358-3445</a></span>
+                        <span class="contact-line"><a href="https://linkedin.com/in/dylaneburkey" target="_blank">LinkedIn</a></span>
+                        <br>
+                        <a href="resumegithub.pdf" class="resume-link" target="_blank">Download Resume (PDF)</a>
+                    </div>
+
+                </div>
+
+                <!-- Title Block -->
+                <div class="title-block">
+                    <div class="tb-row">
+                        <div class="tb-cell label">Drawn By</div>
+                        <div class="tb-cell">D. Burkey</div>
+                        <div class="tb-cell label">Date</div>
+                        <div class="tb-cell">2025</div>
+                    </div>
+                    <div class="tb-row">
+                        <div class="tb-cell label">Checked</div>
+                        <div class="tb-cell">-</div>
+                        <div class="tb-cell label">Scale</div>
+                        <div class="tb-cell">1:1</div>
+                    </div>
+                    <div class="tb-row">
+                        <div class="tb-cell label">Material</div>
+                        <div class="tb-cell large">Georgia Tech ME '27</div>
+                        <div class="tb-cell label">Sheet</div>
+                        <div class="tb-cell">1 of 1</div>
+                    </div>
+                    <div class="tb-row">
+                        <div class="tb-cell title" style="flex:1;">DYLAN BURKEY</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span class="sheet-tab">&#9654; Sheet1</span>
+        <span>SolidWorks Education Edition - Personal Use Only</span>
+        <span style="margin-left:auto;">1:1</span>
+        <span>mm</span>
+        <span>Editing Sheet1</span>
+    </div>
+
 </body>
 </html>
